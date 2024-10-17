@@ -1,0 +1,63 @@
+name: Main
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  checks:
+    name: Checks
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Install Rust Toolchain
+        uses: dtolnay/rust-toolchain@master
+        with:
+          toolchain: stable
+          components: rustfmt
+          targets: x86_64-unknown-linux-gnu
+
+      - name: Sources Checkout
+        uses: actions/checkout@v4
+
+      - name: Check Formatting
+        run: cargo fmt --all --check
+
+      - name: Cargo Check
+        run: cargo check
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        include:
+          - build: linux-gnu
+            target: x86_64-unknown-linux-gnu
+          - build: linux-musl
+            target: x86_64-unknown-linux-musl
+
+    steps:
+      - name: Ubuntu Setup
+        if: matrix.build == 'linux-musl'
+        run: |
+          sudo apt update
+          sudo apt install -y --no-install-recommends musl-tools
+
+      - name: Install Rust Toolchain
+        uses: dtolnay/rust-toolchain@master
+        with:
+          toolchain: stable
+          targets: ${{ matrix.target }}
+
+      - name: Sources Checkout
+        uses: actions/checkout@v4
+
+      - name: Build
+        run: cargo build --target ${{ matrix.target }}
