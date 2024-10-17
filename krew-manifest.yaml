@@ -3,3 +3,19 @@ kind: Plugin
 metadata:
   name: copi
 spec:
+  version: "v0.1.1"
+  homepage: https://github.com/worldline/kubectl-copi
+  shortDescription: "Modify configuration using pickers"
+  description: |
+    Change kube configuration using pickers: context, namespaces...
+  platforms:
+  - uri: https://github.com/worldline/kubectl-copi/releases/download/0.1.1/kubectl-copi_0.1.1_x86_64-unknown-linux-gnu.tar.gz
+    sha256: a99c9d2cf9842680ed5c6006acf38d40d865b18342a2a114fd2499f539791f4f
+    bin: kubectl-copi
+    files:
+    - from: "*"
+      to: "."
+    selector:
+      matchLabels:
+        os: linux
+        arch: amd64
