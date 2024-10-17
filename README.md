@@ -5,9 +5,7 @@
 ![GitHub Release](https://img.shields.io/github/v/release/worldline/kubectl-copi)
 ![GitHub License](https://img.shields.io/github/license/worldline/kubectl-copi)
 
-A [kubectl](https://github.com/kubernetes/kubectl) extension to pick configuration options.
-
-kubectl _co_nfiguration _pi_cker
+A [kubectl](https://github.com/kubernetes/kubectl) extension to pick configuration options - `copi` for configuration PIcker.
 
 ## Installation
 
