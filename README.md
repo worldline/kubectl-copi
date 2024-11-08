@@ -27,8 +27,8 @@ Once installed, it can be invoked using `kubectl copi`:
 Usage: kubectl-copi [COMMAND]
 
 Commands:
-  ctx   Pick a context from the kube config - Default command if none is specified
-  ns    Pick a namespace for the current context
+  ctx   Pick a context from the kube config
+  ns    Pick a namespace for the current context - Default command if none is specified
   help  Print this message or the help of the given subcommand(s)
 
 Options:

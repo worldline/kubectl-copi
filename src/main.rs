@@ -44,8 +44,8 @@ async fn main() -> anyhow::Result<()> {
     let args = Args::parse();
 
     match args.command {
-        Some(Command::PickNamespace) => pick_namespace().await,
-        _ => pick_context(),
+        Some(Command::PickContext) => pick_context(),
+        _ => pick_namespace().await,
     }
 }
 

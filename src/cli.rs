@@ -9,10 +9,10 @@ pub struct Args {
 
 #[derive(Subcommand, Debug, PartialEq)]
 pub enum Command {
-    /// Pick a context from the kube config - Default command if none is specified
+    /// Pick a context from the kube config
     #[command(name = "ctx")]
     PickContext,
-    /// Pick a namespace for the current context
+    /// Pick a namespace for the current context - Default command if none is specified
     #[command(name = "ns")]
     PickNamespace,
 }
